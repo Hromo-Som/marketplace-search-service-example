@@ -7,4 +7,6 @@ class RemoveAd(RemoveAdPort):
         self._uow = uow
 
     async def execute(self, ad_id: int) -> None:
-        raise NotImplementedError
+        async with self._uow as uow:
+            await uow.search.delete(ad_id)
+            await uow.commit()

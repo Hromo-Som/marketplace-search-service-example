@@ -17,6 +17,7 @@ RUN apt-get update \
 WORKDIR /app
 
 COPY pyproject.toml uv.lock ./
+RUN pip install --no-cache-dir uv
 RUN uv sync --frozen --no-install-project --no-dev
 
 COPY . .

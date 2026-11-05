@@ -9,10 +9,10 @@ format:
 check: lint format
 
 test:
-	uv run pytest tests/ -v
+	uv run python -m pytest tests/ -v
 
 migrate:
-	uv run alembic upgrade head
+	uv run python -m alembic upgrade head
 
 migrate-create:
 	uv run alembic revision --autogenerate -m "$(name)"
